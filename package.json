@@ -1,0 +1,22 @@
+{
+  "name": "router-wrapper",
+  "version": "0.0.1",
+  "scripts": {
+    "prepublish": "gobble build -f ./dist",
+    "test": "mocha --harmony"
+  },
+  "main": "./dist/router.js",
+  "files": [
+    "./dist/router.js",
+    "./dist/context.js"
+  ],
+  "devDependencies": {
+    "babel": "^4.6.6",
+    "chai": "^2.1.1",
+    "express": "^4.12.2",
+    "gobble": "^0.7.4",
+    "gobble-babel": "^4.0.0",
+    "mocha": "^2.1.0",
+    "supertest-as-promised": "^1.0.0"
+  }
+}
