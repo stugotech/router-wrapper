@@ -37,4 +37,9 @@ export default class Context {
     // allow chaining
     return this;
   }
+  
+  
+  getRouter() {
+    return this._router;
+  }
 }
