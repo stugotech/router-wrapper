@@ -33,5 +33,8 @@ export default class Context {
     // register the route with express
     args.unshift(route);
     this._router[method].apply(this._router, args);
+    
+    // allow chaining
+    return this;
   }
 }

@@ -2,7 +2,7 @@
 import {expect} from 'chai';
 import supertest from 'supertest-as-promised';
 import express from 'express';
-import Router from '../src/router';
+import Router, {Context} from '../src/router';
 
 
 describe('Router', function () {
@@ -43,5 +43,13 @@ describe('Router', function () {
     await supertest(app)
       .get('/test')
       .expect(500);
+  });
+  
+  it('should export context', function () {
+    expect(Context).to.exist;
+  });
+  
+  it('should allow chaining', function () {
+    expect((new Router(express.Router())).context({}).get('',function () {}).get).to.exist;
   });
 });

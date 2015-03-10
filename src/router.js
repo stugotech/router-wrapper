@@ -15,3 +15,5 @@ export default class Router extends Context {
     return new Context(this._router, ctx);
   }
 }
+
+export { Context };
