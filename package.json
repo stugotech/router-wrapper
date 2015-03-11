@@ -6,10 +6,6 @@
     "test": "mocha --harmony"
   },
   "main": "./dist/router.js",
-  "files": [
-    "./dist/router.js",
-    "./dist/context.js"
-  ],
   "devDependencies": {
     "babel": "^4.6.6",
     "chai": "^2.1.1",

@@ -1,0 +1,4 @@
+.gobble-build/
+src/
+.gitignore
+gobblefile.js
