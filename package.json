@@ -5,7 +5,7 @@
     "prepublish": "gobble build -f ./dist",
     "test": "mocha --harmony"
   },
-  "main": "./dist/router.js",
+  "main": "./dist/Router.js",
   "devDependencies": {
     "chai": "^2.1.1",
     "express": "^4.12.2",
