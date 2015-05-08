@@ -3,9 +3,12 @@ router-wrapper
 
 This project wraps the [express](https://github.com/strongloop/express) project router to add a couple of useful functions.
 
-First up, promise chain termination: if you pass it a function which returns a promise it'll call the `.done()` method for you.
+If you pass it a function which returns a promise it'll call the `.then()` method to handle exceptions for you.
 
 You can also make it bind your handlers to an object of your choice.
+
+Example
+-------
 
 ```js
 // wrap a router
@@ -20,7 +23,7 @@ class MyController {
       // define a route with args to pass to middleware
       .get('/test', this.testAction);
   }
-  
+
   testAction(request, response) {
     return getAPromiseSomehow()
       .then((x) => response.send(x));

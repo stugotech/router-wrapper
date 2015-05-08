@@ -67,6 +67,25 @@ describe('Router', function () {
     expect(response.text).to.equal('5');
   });
 
+  it('should have a working use method', async function () {
+    wrappedRouter
+      .context({name: 'test'})
+      .use(async function (request, response, next) {
+        expect(this.name).to.equal('test');
+        request.test = await Promise.resolve(5);
+        next();
+      })
+      .get('/test', function (request, response) {
+        response.send(request.test.toString());
+      });
+
+    let response = await supertest(app)
+      .get('/test')
+      .expect(200);
+
+    expect(response.text).to.equal('5');
+  });
+
   it('should throw errors', async function () {
     wrappedRouter
       .get('/test', async function (request, response) {
