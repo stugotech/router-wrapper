@@ -1,6 +1,6 @@
 {
   "name": "router-wrapper",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "scripts": {
     "prepublish": "gobble build -f ./dist",
     "test": "mocha --harmony"
