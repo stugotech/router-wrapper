@@ -32,6 +32,41 @@ describe('Router', function () {
     expect(response.text).to.equal('5');
   });
 
+  it('should have a working param method', async function () {
+    wrappedRouter
+      .param('test', async function (request, response, next, test) {
+        var value = await Promise.resolve(5);
+        request.test = parseInt(test);
+        next()
+      })
+      .get('/:test', function (request, response) {
+        response.send(request.test.toString());
+      });
+
+    let response = await supertest(app)
+      .get('/5')
+      .expect(200);
+
+    expect(response.text).to.equal('5');
+  });
+
+  it('should have a working all method', async function () {
+    wrappedRouter
+      .all('*', async function (request, response, next) {
+        request.test = await Promise.resolve(5);
+        next();
+      })
+      .get('/test', function (request, response) {
+        response.send(request.test.toString());
+      });
+
+    let response = await supertest(app)
+      .get('/test')
+      .expect(200);
+
+    expect(response.text).to.equal('5');
+  });
+
   it('should throw errors', async function () {
     wrappedRouter
       .get('/test', async function (request, response) {
